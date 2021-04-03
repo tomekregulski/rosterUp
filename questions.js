@@ -1,4 +1,4 @@
-const html = [
+module.exports = [
   {
     type: "input",
     name: "companyName",
@@ -21,76 +21,76 @@ const html = [
   },
 ];
 
-const manager = [
-  {
-    type: "input",
-    name: "mgrName",
-    message: "What is the team manager's name",
-  },
-  {
-    type: "input",
-    name: "mgrID",
-    message: "What is the manager's company ID?",
-  },
-  {
-    type: "input",
-    name: "mgrEmail",
-    message: "What is the manager's email address?",
-  },
-  {
-    type: "input",
-    name: "mgrPhone",
-    message: "What is the manager's company phone number?",
-  },
-];
+// const manager = [
+//   {
+//     type: "input",
+//     name: "mgrName",
+//     message: "What is the team manager's name",
+//   },
+//   {
+//     type: "input",
+//     name: "mgrID",
+//     message: "What is the manager's company ID?",
+//   },
+//   {
+//     type: "input",
+//     name: "mgrEmail",
+//     message: "What is the manager's email address?",
+//   },
+//   {
+//     type: "input",
+//     name: "mgrPhone",
+//     message: "What is the manager's company phone number?",
+//   },
+// ];
 
-const engineer = [
-  {
-    type: "input",
-    name: "engName",
-    message: "What is the engineer's name",
-  },
-  {
-    type: "input",
-    name: "engID",
-    message: "What is the engineer's company ID?",
-  },
-  {
-    type: "input",
-    name: "engEmail",
-    message: "What is the engineer's email address?",
-  },
-  {
-    type: "input",
-    name: "engGit",
-    message: "What is the engineer's gitHub url?",
-  },
-];
+// const engineer = [
+//   {
+//     type: "input",
+//     name: "engName",
+//     message: "What is the engineer's name",
+//   },
+//   {
+//     type: "input",
+//     name: "engID",
+//     message: "What is the engineer's company ID?",
+//   },
+//   {
+//     type: "input",
+//     name: "engEmail",
+//     message: "What is the engineer's email address?",
+//   },
+//   {
+//     type: "input",
+//     name: "engGit",
+//     message: "What is the engineer's gitHub url?",
+//   },
+// ];
 
-const intern = [
-  {
-    type: "input",
-    name: "intName",
-    message: "What is the intern's name",
-  },
-  {
-    type: "input",
-    name: "intID",
-    message: "What is the intern's company ID?",
-  },
-  {
-    type: "input",
-    name: "intEmail",
-    message: "What is the intern's email address?",
-  },
-  {
-    type: "input",
-    name: "intSchool",
-    message: "What is the intern's school?",
-  },
-];
+// const intern = [
+//   {
+//     type: "input",
+//     name: "intName",
+//     message: "What is the intern's name",
+//   },
+//   {
+//     type: "input",
+//     name: "intID",
+//     message: "What is the intern's company ID?",
+//   },
+//   {
+//     type: "input",
+//     name: "intEmail",
+//     message: "What is the intern's email address?",
+//   },
+//   {
+//     type: "input",
+//     name: "intSchool",
+//     message: "What is the intern's school?",
+//   },
+// ];
 
-module.exports.teamMember = teamMember;
-module.exports.manager = manager;
-module.exports.engineer = engineer;
-module.exports.intern = intern;
+// module.exports.html = html;
+// module.exports.manager = manager;
+// module.exports.engineer = engineer;
+// module.exports.intern = intern;
