@@ -1,5 +1,8 @@
 const fs = require("fs");
 const questions = require("./questions.js");
+const mgrQuestions = require("./mgrQuestions.js");
+const engQuestions = require("./engQuestions.js");
+const intQuestions = require("./intQuestions.js");
 const inquirer = require("inquirer");
 
 const generateHTML = (questions) =>
