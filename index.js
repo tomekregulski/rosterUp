@@ -88,4 +88,45 @@ function thirdQuestion(data) {
   });
 }
 
-firstQuestion();
+// firstQuestion();
+
+class Employee {
+  constructor(name, idNum, email) {
+    this.name = name;
+    this.idNum = idNum;
+    this.email = email;
+  }
+}
+
+class Manager extends Employee {
+  constructor(name, idNum, email, phone) {
+    // super(name);
+    // super(idNum);
+    // super(email);
+    super(name, idNum, email);
+    this.phone = phone;
+  }
+}
+
+class Engineer extends Employee {
+  constructor(name, idNum, email, git) {
+    super(name, idNum, email);
+    this.git = git;
+  }
+}
+
+class Intern extends Employee {
+  constructor(name, idNum, email, school) {
+    super(name, idNum, email);
+    this.school = school;
+  }
+}
+
+let d = new Employee("tom", "12", "to");
+let t = new Manager("tom", "12", "to", "456");
+let f = new Engineer("tom", "12", "toooo", "opopop");
+let y = new Intern("tom", "12", "to", "sosoooo", "ldldldld");
+console.log(d);
+console.log(t);
+console.log(f);
+console.log(y);
