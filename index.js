@@ -1,7 +1,7 @@
 const fs = require("fs");
 const questions = require("./questions.js");
-const questionTwo = require("./questionTwo.js");
-const questionThree = require("./questionThree.js");
+const engineerQuestions = require("./engineerQuestions.js");
+const internQuestions = require("./internQuestions.js");
 const inquirer = require("inquirer");
 
 const generateHTML = (questions) =>
@@ -65,78 +65,82 @@ const generateHTML = (questions) =>
 // });
 function firstQuestion() {
   inquirer.prompt(questions).then((data) => {
-    console.log(data.test);
-    if (data.test == "yes") {
-      secondQuestion(data);
+    if (data.test == "Add an engineer") {
+      engineerQuestion(data);
+    } else if (data.test == "Add an intern") {
+      internQuestion(data);
     } else {
-      thirdQuestion(data);
+      console.log(data);
     }
   });
 }
 
-function secondQuestion(data) {
-  inquirer.prompt(questionTwo).then((questionTwoAnswers) => {
-    console.log(data.test);
-    console.log(questionTwoAnswers.test);
+function engineerQuestion(data) {
+  inquirer.prompt(engineerQuestions).then((engineerQuestionsAnswers) => {
+    console.log(data);
+    console.log(engineerQuestionsAnswers.engName);
+    console.log(engineerQuestionsAnswers.engID);
+    console.log(engineerQuestionsAnswers.engEmail);
+    console.log(engineerQuestionsAnswers.engGit);
   });
 }
 
-function thirdQuestion(data) {
-  inquirer.prompt(questionThree).then((questionThreeAnswers) => {
-    console.log(data.test);
-    console.log(questionThreeAnswers.test);
+function internQuestion(data) {
+  inquirer.prompt(internQuestions).then((internQuestionsAnswers) => {
+    console.log(data);
+    console.log(internQuestionsAnswers.intName);
+    console.log(internQuestionsAnswers.intID);
+    console.log(internQuestionsAnswers.intEmail);
+    console.log(internQuestionsAnswers.intSchool);
   });
 }
 
-// firstQuestion();
+firstQuestion();
 
-class Employee {
-  constructor(name, idNum, email) {
-    this.name = name;
-    this.idNum = idNum;
-    this.email = email;
-  }
-  getname();
-  getId();
-  getEmail();
-  getRole(); // returns Employee
-}
+// class Employee {
+//   constructor(name, idNum, email) {
+//     this.name = name;
+//     this.idNum = idNum;
+//     this.email = email;
+//   }
+//   getname();
+//   getId();
+//   getEmail();
+//   getRole(); // returns Employee
+// }
 
-class Manager extends Employee {
-  constructor(name, idNum, email, phone) {
-    // super(name);
-    // super(idNum);
-    // super(email);
-    super(name, idNum, email);
-    this.phone = phone;
-    phone();
-    getRole(); // returns Manager
-  }
-}
+// class Manager extends Employee {
+//   constructor(name, idNum, email, phone) {
+//     super(name, idNum, email);
+//     this.phone = phone;
+//     phone();
+//     getRole(); // returns Manager
+//   }
+// }
 
-class Engineer extends Employee {
-  constructor(name, idNum, email, github) {
-    super(name, idNum, email);
-    this.github = github;
-    getGitHub();
-    getRole(); // returns Engineer
-  }
-}
+// class Engineer extends Employee {
+//   constructor(name, idNum, email, github) {
+//     super(name, idNum, email);
+//     this.github = github;
+//     getGitHub();
+//     getRole(); // returns Engineer
+//   }
+// }
 
-class Intern extends Employee {
-  constructor(name, idNum, email, school) {
-    super(name, idNum, email);
-    this.school = school;
-    getSchool();
-    getRole(); // returns Intern
-  }
-}
+// class Intern extends Employee {
+//   constructor(name, idNum, email, school) {
+//     super(name, idNum, email);
+//     this.school = school;
+//     getSchool();
+//     getRole(); // returns Intern
+//   }
+// }
 
-let d = new Employee("tom", "12", "to");
-let t = new Manager("tom", "12", "to", "456");
-let f = new Engineer("tom", "12", "toooo", "opopop");
-let y = new Intern("tom", "12", "to", "sosoooo", "ldldldld");
-console.log(d);
-console.log(t);
-console.log(f);
-console.log(y);
+// let d = new Employee("tom", "12", "to");
+// let t = new Manager("tom", "12", "to", "456");
+// let f = new Engineer("tom", "12", "toooo", "opopop");
+// let y = new Intern("tom", "12", "to", "sosoooo", "ldldldld");
+// console.log(d);
+// console.log(t);
+// console.log(f);
+// console.log(y);
