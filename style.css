@@ -28,7 +28,9 @@ h1 {
   margin-top: 80px;
 }
 
-#mgrProfile {
+#mgrProfile,
+.engDetails,
+.intDetails {
   text-align: center;
   padding-top: 30px;
 }
