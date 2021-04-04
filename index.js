@@ -1,8 +1,5 @@
 const fs = require("fs");
 const questions = require("./questions.js");
-const mgrQuestions = require("./mgrQuestions.js");
-const engQuestions = require("./engQuestions.js");
-const intQuestions = require("./intQuestions.js");
 const inquirer = require("inquirer");
 
 const generateHTML = (questions) =>
@@ -30,9 +27,18 @@ const generateHTML = (questions) =>
               <p>${questions.teamOverview}</p>
             </div>
         </section>
+        <section id="mgrProfile">
+        <div>
+          <h2>${questions.mgrName}</h2>
+          <p>${questions.mgrID}</p>
+          <p>${questions.mgrEmail}</p>
+          <p>${questions.mgrPhone}</p>
+        </div>
+      </section>
     </main>
 </body>
 </html>`;
+
 inquirer.prompt(questions).then((data) => {
   const filename = `roster.html`;
   fs.writeFile(filename, generateHTML(data), (err) =>
