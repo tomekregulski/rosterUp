@@ -1,5 +1,7 @@
 const fs = require("fs");
 const questions = require("./questions.js");
+const questionTwo = require("./questionTwo.js");
+const questionThree = require("./questionThree.js");
 const inquirer = require("inquirer");
 
 const generateHTML = (questions) =>
@@ -55,9 +57,35 @@ const generateHTML = (questions) =>
   </body>
 </html>`;
 
-inquirer.prompt(questions).then((data) => {
-  const filename = `roster.html`;
-  fs.writeFile(filename, generateHTML(data), (err) =>
-    err ? console.log(err) : console.log("Success!")
-  );
-});
+// inquirer.prompt(questions).then((data) => {
+//   const filename = `roster.html`;
+//   fs.writeFile(filename, generateHTML(data), (err) =>
+//     err ? console.log(err) : console.log("Success!")
+//   );
+// });
+function firstQuestion() {
+  inquirer.prompt(questions).then((data) => {
+    console.log(data.test);
+    if (data.test == "yes") {
+      secondQuestion(data);
+    } else {
+      thirdQuestion(data);
+    }
+  });
+}
+
+function secondQuestion(data) {
+  inquirer.prompt(questionTwo).then((questionTwoAnswers) => {
+    console.log(data.test);
+    console.log(questionTwoAnswers.test);
+  });
+}
+
+function thirdQuestion(data) {
+  inquirer.prompt(questionThree).then((questionThreeAnswers) => {
+    console.log(data.test);
+    console.log(questionThreeAnswers.test);
+  });
+}
+
+firstQuestion();
