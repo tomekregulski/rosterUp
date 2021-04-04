@@ -96,6 +96,10 @@ class Employee {
     this.idNum = idNum;
     this.email = email;
   }
+  getname();
+  getId();
+  getEmail();
+  getRole(); // returns Employee
 }
 
 class Manager extends Employee {
@@ -105,13 +109,17 @@ class Manager extends Employee {
     // super(email);
     super(name, idNum, email);
     this.phone = phone;
+    phone();
+    getRole(); // returns Manager
   }
 }
 
 class Engineer extends Employee {
-  constructor(name, idNum, email, git) {
+  constructor(name, idNum, email, github) {
     super(name, idNum, email);
-    this.git = git;
+    this.github = github;
+    getGitHub();
+    getRole(); // returns Engineer
   }
 }
 
@@ -119,6 +127,8 @@ class Intern extends Employee {
   constructor(name, idNum, email, school) {
     super(name, idNum, email);
     this.school = school;
+    getSchool();
+    getRole(); // returns Intern
   }
 }
 
