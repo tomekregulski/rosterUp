@@ -78,10 +78,16 @@ function firstQuestion() {
 function engineerQuestion(data) {
   inquirer.prompt(engineerQuestions).then((engineerQuestionsAnswers) => {
     console.log(data);
-    console.log(engineerQuestionsAnswers.engName);
-    console.log(engineerQuestionsAnswers.engID);
-    console.log(engineerQuestionsAnswers.engEmail);
-    console.log(engineerQuestionsAnswers.engGit);
+    let name = engineerQuestionsAnswers.engName;
+    let idNum = engineerQuestionsAnswers.engID;
+    let email = engineerQuestionsAnswers.engEmail;
+    let github = engineerQuestionsAnswers.engGit;
+    let newEng = new Engineer(name, idNum, email, github);
+    console.log("creating");
+    // console.log(engineerQuestionsAnswers.engName);
+    // console.log(engineerQuestionsAnswers.engID);
+    // console.log(engineerQuestionsAnswers.engEmail);
+    // console.log(engineerQuestionsAnswers.engGit);
   });
 }
 
@@ -97,17 +103,17 @@ function internQuestion(data) {
 
 firstQuestion();
 
-// class Employee {
-//   constructor(name, idNum, email) {
-//     this.name = name;
-//     this.idNum = idNum;
-//     this.email = email;
-//   }
-//   getname();
-//   getId();
-//   getEmail();
-//   getRole(); // returns Employee
-// }
+class Employee {
+  constructor(name, idNum, email) {
+    this.name = name;
+    this.idNum = idNum;
+    this.email = email;
+  }
+  // getname();
+  // getId();
+  // getEmail();
+  // getRole(); // returns Employee
+}
 
 // class Manager extends Employee {
 //   constructor(name, idNum, email, phone) {
@@ -118,23 +124,25 @@ firstQuestion();
 //   }
 // }
 
-// class Engineer extends Employee {
-//   constructor(name, idNum, email, github) {
-//     super(name, idNum, email);
-//     this.github = github;
-//     getGitHub();
-//     getRole(); // returns Engineer
-//   }
-// }
+class Engineer extends Employee {
+  constructor(name, idNum, email, github) {
+    super(name, idNum, email);
+    this.github = github;
+    console.log(this);
+    console.log("created");
+    // getGitHub();
+    // getRole(); // returns Engineer
+  }
+}
 
-// class Intern extends Employee {
-//   constructor(name, idNum, email, school) {
-//     super(name, idNum, email);
-//     this.school = school;
-//     getSchool();
-//     getRole(); // returns Intern
-//   }
-// }
+class Intern extends Employee {
+  constructor(name, idNum, email, school) {
+    super(name, idNum, email);
+    this.school = school;
+    getSchool();
+    getRole(); // returns Intern
+  }
+}
 
 // let d = new Employee("tom", "12", "to");
 // let t = new Manager("tom", "12", "to", "456");
