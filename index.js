@@ -2,106 +2,49 @@ const fs = require("fs");
 const questions = require("./questions.js");
 const engineerQuestions = require("./engineerQuestions.js");
 const internQuestions = require("./internQuestions.js");
+const htmlTemplate = require("./htmlTemplate");
+const menu = require("./menu.js");
 const inquirer = require("inquirer");
 
-const generateHTML = (questions) =>
-  `<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="style.css" />
-      <title>${questions.companyName} - ${questions.teamProjectName}</title>
-  </head>
-  <body>
-      <header>
-          <h1>${questions.companyName}</h1>
-      </header>
-      <main>
-          <section id="overview">
-              <div id="company">
-                <h2>Our Mission</h2>
-                <p>${questions.companyDesc}</p>
-              </div>
-              <div id="team">
-                <h2>Our Team</h2>
-                <p>${questions.teamOverview}</p>
-              </div>
-          </section>
-          <section id="mgrProfile">
-            <div>
-                <h2>${questions.mgrName}</h2>
-                <p>${questions.mgrID}</p>
-                <p>${questions.mgrEmail}</p>
-                <p>${questions.mgrPhone}</p>
-            </div>
-        </section>
-        <section id="engProfile">
-            <div class="engDetails">
-                <h2>${questions.engName}</h2>
-                <p>${questions.engID}</p>
-                <p>${questions.engEmail}</p>
-                <p>${questions.engPhone}</p>
-            </div>
-        </section>
-        <section id="intProfile">
-            <div class="intDetails">
-                <h2>${questions.intName}</h2>
-                <p>${questions.intID}</p>
-                <p>${questions.intEmail}</p>
-                <p>${questions.intPhone}</p>
-            </div>
-        </section>
-      </main>
-  </body>
-</html>`;
+inquirer.prompt(questions).then((data) => {
+  const filename = `roster.html`;
+  fs.writeFile(filename, htmlTemplate.generateMainHtml(data), (err) =>
+    err ? console.log(err) : console.log("Success!")
+  );
+  menuPrompt();
+});
 
-// inquirer.prompt(questions).then((data) => {
-//   const filename = `roster.html`;
-//   fs.writeFile(filename, generateHTML(data), (err) =>
-//     err ? console.log(err) : console.log("Success!")
-//   );
-// });
-function firstQuestion() {
-  inquirer.prompt(questions).then((data) => {
-    if (data.test == "Add an engineer") {
-      engineerQuestion(data);
-    } else if (data.test == "Add an intern") {
-      internQuestion(data);
+function menuPrompt() {
+  inquirer.prompt(menu).then((answer) => {
+    if (answer.what == "Add an engineer") {
+      engineerQuestion();
+    } else if (answer.what == "Add an intern") {
+      internQuestion();
     } else {
-      console.log(data);
+      console.log(answer.what);
     }
   });
 }
 
-function engineerQuestion(data) {
+function engineerQuestion() {
   inquirer.prompt(engineerQuestions).then((engineerQuestionsAnswers) => {
-    console.log(data);
     let name = engineerQuestionsAnswers.engName;
     let idNum = engineerQuestionsAnswers.engID;
     let email = engineerQuestionsAnswers.engEmail;
     let github = engineerQuestionsAnswers.engGit;
     let newEng = new Engineer(name, idNum, email, github);
-    console.log("creating");
-    // console.log(engineerQuestionsAnswers.engName);
-    // console.log(engineerQuestionsAnswers.engID);
-    // console.log(engineerQuestionsAnswers.engEmail);
-    // console.log(engineerQuestionsAnswers.engGit);
   });
 }
 
-function internQuestion(data) {
+function internQuestion() {
   inquirer.prompt(internQuestions).then((internQuestionsAnswers) => {
-    console.log(data);
-    console.log(internQuestionsAnswers.intName);
-    console.log(internQuestionsAnswers.intID);
-    console.log(internQuestionsAnswers.intEmail);
-    console.log(internQuestionsAnswers.intSchool);
+    let name = internQuestionsAnswers.intName;
+    let idNum = internQuestionsAnswers.intID;
+    let email = internQuestionsAnswers.intEmail;
+    let school = internQuestionsAnswers.intSchool;
+    let newInt = new Intern(name, idNum, email, school);
   });
 }
-
-firstQuestion();
 
 class Employee {
   constructor(name, idNum, email) {
@@ -109,29 +52,38 @@ class Employee {
     this.idNum = idNum;
     this.email = email;
   }
-  // getname();
-  // getId();
-  // getEmail();
-  // getRole(); // returns Employee
 }
 
-// class Manager extends Employee {
-//   constructor(name, idNum, email, phone) {
-//     super(name, idNum, email);
-//     this.phone = phone;
-//     phone();
-//     getRole(); // returns Manager
-//   }
-// }
+class Manager extends Employee {
+  constructor(name, idNum, email, phone) {
+    super(name, idNum, email);
+    this.phone = phone;
+    // const filename = `${this.name}.html`;
+    // fs.writeFile(filename, generateEngineer(this), (err) =>
+    //   err ? console.log(err) : console.log("Success!")
+    // );
+  }
+}
 
 class Engineer extends Employee {
   constructor(name, idNum, email, github) {
     super(name, idNum, email);
     this.github = github;
     console.log(this);
-    console.log("created");
-    // getGitHub();
-    // getRole(); // returns Engineer
+    console.log(`${this.name}created`);
+    console.log(this.name);
+    // const filename = `${this.name}.html`;
+    // fs.writeFile(filename, generateEngHtml(this), (err) =>
+    //   err ? console.log(err) : console.log("Success!")
+    // );
+    // generateEngineer(this.name);
+    htmlTemplate.generateEngHtml(
+      this.name,
+      this.idNum,
+      this.email,
+      this.github
+    );
+    menuPrompt();
   }
 }
 
@@ -139,16 +91,19 @@ class Intern extends Employee {
   constructor(name, idNum, email, school) {
     super(name, idNum, email);
     this.school = school;
-    getSchool();
-    getRole(); // returns Intern
+    console.log(this);
+    console.log(`${this.name}created`);
+    console.log(this.name);
+    // const filename = `${this.name}.html`;
+    // fs.writeFile(filename, generateIntHtml(this), (err) =>
+    //   err ? console.log(err) : console.log("Success!")
+    // );
+    htmlTemplate.generateIntHtml(
+      this.name,
+      this.idNum,
+      this.email,
+      this.school
+    );
+    menuPrompt();
   }
 }
-
-// let d = new Employee("tom", "12", "to");
-// let t = new Manager("tom", "12", "to", "456");
-// let f = new Engineer("tom", "12", "toooo", "opopop");
-// let y = new Intern("tom", "12", "to", "sosoooo", "ldldldld");
-// console.log(d);
-// console.log(t);
-// console.log(f);
-// console.log(y);
