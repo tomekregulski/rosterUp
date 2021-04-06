@@ -5,7 +5,8 @@ const internQuestions = require("./internQuestions.js");
 const htmlTemplate = require("./htmlTemplate");
 const menu = require("./menu.js");
 const inquirer = require("inquirer");
-
+// const { hasUncaughtExceptionCaptureCallback } = require("process");
+// wrap in init function
 inquirer.prompt(questions).then((data) => {
   const filename = `roster.html`;
   fs.writeFile(filename, htmlTemplate.generateMainHtml(data), (err) =>
@@ -14,6 +15,25 @@ inquirer.prompt(questions).then((data) => {
   menuPrompt();
 });
 
+// index.test.js
+// const questions = require("./questions.js");
+// jest.mock("inquirer");
+// jest.mock('fs')
+
+// describe("init", () => {
+//   it("should call the prompt method with questions", () => {
+//     inquirer.prompt.mockReturnValue(
+//       new Promise( (resolve) => {
+//         resolve({})
+//       })
+//     )
+//     init();
+
+//     expect(inquirer.prompt).toBeCalledWith(questions);
+//     expect(inquirer.prompt()).resolves.toEqual({});
+//   })
+// })
+
 function menuPrompt() {
   inquirer.prompt(menu).then((answer) => {
     if (answer.what == "Add an engineer") {
@@ -21,7 +41,7 @@ function menuPrompt() {
     } else if (answer.what == "Add an intern") {
       internQuestion();
     } else {
-      console.log(answer.what);
+      console.log("Finishing your website!🙌💫💥");
     }
   });
 }
