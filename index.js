@@ -1,19 +1,28 @@
 const fs = require("fs");
-const questions = require("./questions.js");
-const engineerQuestions = require("./engineerQuestions.js");
-const internQuestions = require("./internQuestions.js");
+const questions = require("./src/questions.js");
+const managerQuestions = require("./src/managerQuestions.js");
+const engineerQuestions = require("./src/engineerQuestions.js");
+const internQuestions = require("./src/internQuestions.js");
 const htmlTemplate = require("./htmlTemplate");
-const menu = require("./menu.js");
+const menu = require("./src/menu.js");
 const inquirer = require("inquirer");
 // const { hasUncaughtExceptionCaptureCallback } = require("process");
-// wrap in init function
-inquirer.prompt(questions).then((data) => {
-  const filename = `roster.html`;
-  fs.writeFile(filename, htmlTemplate.generateMainHtml(data), (err) =>
-    err ? console.log(err) : console.log("Success!")
-  );
-  menuPrompt();
-});
+function init() {
+  inquirer.prompt(managerQuestions).then((managerQuestionsAnswers) => {
+    let name = managerQuestionsAnswers.mgrName;
+    let idNum = managerQuestionsAnswers.mgrID;
+    let email = managerQuestionsAnswers.mgrEmail;
+    let phone = managerQuestionsAnswers.mgrPhone;
+    let newMgr = new Manager(name, idNum, email, phone);
+  });
+}
+// inquirer.prompt(questions).then((data) => {
+//   const filename = `roster.html`;
+//   fs.writeFile(filename, htmlTemplate.generateMainHtml(data), (err) =>
+//     err ? console.log(err) : console.log("Success!")
+//   );
+//   menuPrompt();
+// });
 
 // index.test.js
 // const questions = require("./questions.js");
@@ -78,10 +87,14 @@ class Manager extends Employee {
   constructor(name, idNum, email, phone) {
     super(name, idNum, email);
     this.phone = phone;
+    console.log(this);
+    console.log(`${this.name}created`);
+    console.log(this.name);
     // const filename = `${this.name}.html`;
     // fs.writeFile(filename, generateEngineer(this), (err) =>
     //   err ? console.log(err) : console.log("Success!")
     // );
+    menuPrompt();
   }
 }
 
@@ -127,3 +140,5 @@ class Intern extends Employee {
     menuPrompt();
   }
 }
+
+init();
