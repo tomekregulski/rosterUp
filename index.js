@@ -3,7 +3,7 @@ const questions = require("./src/questions.js");
 const managerQuestions = require("./src/managerQuestions.js");
 const engineerQuestions = require("./src/engineerQuestions.js");
 const internQuestions = require("./src/internQuestions.js");
-const htmlTemplate = require("./htmlTemplate");
+const renderHTML = require("./htmlTemplate");
 const menu = require("./src/menu.js");
 const inquirer = require("inquirer");
 const path = require("path");
@@ -39,6 +39,7 @@ function init() {
         internQuestion();
       } else {
         console.log("Finishing your website!🙌💫💥");
+        renderHTML(team, __dirname);
       }
     });
   }
