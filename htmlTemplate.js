@@ -1,4 +1,10 @@
-function renderHTML(x, filePath) {
+const fs = require("fs");
+
+const path = require("path");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "roster.html");
+
+function renderHTML(teamArray, OUTPUT_DIR) {
   let HTML = `<!DOCTYPE html>
     <html lang="en">
         <head>
@@ -14,7 +20,7 @@ function renderHTML(x, filePath) {
             </header>
             <main>`;
 
-  x.forEach((Employee) => {
+  teamArray.forEach((Employee) => {
     HTML += `
         <section class="card">
             <div class="name">
@@ -44,17 +50,17 @@ function renderHTML(x, filePath) {
     </body>
     </html>`;
 
-  generateMainHtml(HTML, filePath);
+  generateMainHtml(HTML, OUTPUT_DIR);
 }
 
 function getRole(Employee) {
-  switch (employee.role) {
+  switch (Employee.role) {
     case "Manager":
-      return `<h3${employee.role}<h3>`;
+      return `<h3${Employee.role}<h3>`;
     case "Engineer":
-      return `<h3${employee.role}<h3>`;
+      return `<h3${Employee.role}<h3>`;
     case "Intern":
-      return `<h3${employee.role}<h3>`;
+      return `<h3${Employee.role}<h3>`;
   }
 }
 
@@ -73,9 +79,9 @@ function getOther(employee) {
 
 function generateMainHtml(html, filePath) {
   const dir = path.join(filePath, "dist");
-  false.mkdir(dir, { recursive: true }, (err) => {
+  fs.mkdir(dir, { recursive: true }, (err) => {
     err ? console.error(err) : process.chdir(dir);
-    false.writeFileSync("roster.html", html);
+    fs.writeFileSync("roster.html", html);
   });
 }
 

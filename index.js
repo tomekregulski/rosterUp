@@ -3,12 +3,12 @@ const questions = require("./src/questions.js");
 const managerQuestions = require("./src/managerQuestions.js");
 const engineerQuestions = require("./src/engineerQuestions.js");
 const internQuestions = require("./src/internQuestions.js");
-const renderHTML = require("./htmlTemplate");
+const htmlTemplate = require("./htmlTemplate");
 const menu = require("./src/menu.js");
 const inquirer = require("inquirer");
 const path = require("path");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const outputPath = path.join(OUTPUT_DIR, "roster.html");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
@@ -39,7 +39,7 @@ function init() {
         internQuestion();
       } else {
         console.log("Finishing your website!🙌💫💥");
-        renderHTML(team, __dirname);
+        htmlTemplate.renderHTML(teamArray, OUTPUT_DIR);
       }
     });
   }
