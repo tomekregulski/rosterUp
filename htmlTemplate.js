@@ -20,26 +20,27 @@ function renderHTML(teamArray, OUTPUT_DIR) {
             </header>
             <main>`;
 
-  teamArray.forEach((Employee) => {
+  teamArray.forEach((employee) => {
+    console.log(employee);
     HTML += `
         <section class="card">
             <div class="name">
-                <h2>${Employee.name}</h2>
-                <span>${getRole(Employee)}</span>
+                <h2>${employee.name}</h2>
+                <span>${getRole(employee)}</span>
             </div>
             <div class="employee-info">
-                <div class="id>
+                <div class="id">
                     <span>ID: </span>
-                    <span>${Employee.ID}</span>
+                    <span>${employee.idNum}</span>
                 </div>
                 <div class="email">
                     <span>Email: </span>
-                    <span><a href="mailto:${Employee.email}">${
-      Employee.email
+                    <span><a href="mailto:${employee.email}">${
+      employee.email
     }</a></span>
                 </div>
                 <div class="extra">
-                    ${getOther(Employee)}
+                    ${getOther(employee)}
                 </div>
             </div>
         </article>
@@ -53,31 +54,37 @@ function renderHTML(teamArray, OUTPUT_DIR) {
   generateMainHtml(HTML, OUTPUT_DIR);
 }
 
-function getRole(Employee) {
-  switch (Employee.role) {
+function getRole(employee) {
+  console.log("3");
+  console.log(employee.role);
+  switch (employee.role) {
     case "Manager":
-      return `<h3${Employee.role}<h3>`;
+      return `<h3>${employee.role}<h3>`;
     case "Engineer":
-      return `<h3${Employee.role}<h3>`;
+      return `<h3>${employee.role}<h3>`;
     case "Intern":
-      return `<h3${Employee.role}<h3>`;
+      return `<h3>${employee.role}<h3>`;
   }
 }
 
 function getOther(employee) {
   switch (employee.role) {
     case "Manager":
-      return `<span><a href="tel:+${employee.officeNumber}">${employee.officeNumber}</a></span>
+      console.log(employee.role);
+      return `<span><a href="tel:+${employee.phone}">${employee.phone}</a></span>
       `;
     case "Engineer":
+      console.log(employee.role);
       return `<span><a href="https://github.com/${employee.github}">github.com/${employee.github}</a></span>
       `;
     case "Intern":
+      console.log(employee.role);
       return `<span>${employee.school}</span>`;
   }
 }
 
 function generateMainHtml(html, filePath) {
+  console.log("4 - Finishing your website!🙌💫💥");
   const dir = path.join(filePath, "dist");
   fs.mkdir(dir, { recursive: true }, (err) => {
     err ? console.error(err) : process.chdir(dir);

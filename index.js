@@ -38,7 +38,7 @@ function init() {
       } else if (answer.what == "Add an intern") {
         internQuestion();
       } else {
-        console.log("Finishing your website!🙌💫💥");
+        console.log("Putting it all together...");
         htmlTemplate.renderHTML(teamArray, OUTPUT_DIR);
       }
     });
