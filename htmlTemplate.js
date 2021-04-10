@@ -4,7 +4,7 @@ const path = require("path");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "roster.html");
 
-function renderHTML(teamArray, OUTPUT_DIR) {
+function renderHTML(teamArray) {
   let HTML = `<!DOCTYPE html>
     <html lang="en">
         <head>
@@ -50,7 +50,8 @@ function renderHTML(teamArray, OUTPUT_DIR) {
     </body>
     </html>`;
 
-  generateMainHtml(HTML, OUTPUT_DIR);
+  // generateMainHtml(HTML, OUTPUT_DIR);
+  generateMainHtml(HTML);
 }
 
 function getRole(employee) {
@@ -77,13 +78,19 @@ function getOther(employee) {
   }
 }
 
-function generateMainHtml(html, filePath) {
+function generateMainHtml(HTML) {
   console.log("4 - Finishing your website!🙌💫💥");
-  const dir = outputPath;
-  fs.mkdir(dir, { recursive: true }, (err) => {
-    err ? console.error(err) : process.chdir(dir);
-    fs.writeFileSync("roster.html", html);
+  fs.mkdir(OUTPUT_DIR, { recursive: true }, (err) => {
+    err ? console.error(err) : process.chdir(OUTPUT_DIR);
+    fs.writeFileSync("roster.html", HTML);
   });
+
+  // const dir = outputPath;
+
+  // fs.mkdir(dir, { recursive: true }, (err) => {
+  //   err ? console.error(err) : process.chdir(dir);
+  //   fs.writeFileSync("roster.html", html);
+  // });\
 }
 
 module.exports.renderHTML = renderHTML;

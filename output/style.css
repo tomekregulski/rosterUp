@@ -1,0 +1,66 @@
+body {
+  background-color: white;
+  margin: 0;
+}
+
+header {
+  background-color: rgba(129, 174, 194, 0.548);
+}
+
+h1 {
+  text-align: center;
+  padding: 30px 0;
+  margin: 0;
+}
+
+main {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding: 0 0 5px 0;
+  border: 1px solid grey;
+  text-align: center;
+  margin: 15px 20px 0;
+  width: 200px;
+}
+
+h2 {
+  padding: 5px 0 10px 0;
+  background-color: rgba(129, 174, 194, 0.548);
+  margin: 0;
+  border-bottom: 1px solid grey;
+}
+
+h3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.employee-info {
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 300px) {
+  .card {
+    width: 270px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  main {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  .card {
+    margin: 10px 10px;
+    width: 300px;
+  }
+}
