@@ -26,7 +26,6 @@ function init() {
         mgr.mgrPhone
       );
       teamArray.push(manager);
-      console.log(teamArray);
       menuPrompt();
     });
   }
@@ -53,7 +52,6 @@ function init() {
         eng.engGit
       );
       teamArray.push(engineer);
-      console.log(teamArray);
       menuPrompt();
     });
   }

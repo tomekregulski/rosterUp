@@ -21,7 +21,6 @@ function renderHTML(teamArray, OUTPUT_DIR) {
             <main>`;
 
   teamArray.forEach((employee) => {
-    console.log(employee);
     HTML += `
         <section class="card">
             <div class="name">
@@ -55,8 +54,6 @@ function renderHTML(teamArray, OUTPUT_DIR) {
 }
 
 function getRole(employee) {
-  console.log("3");
-  console.log(employee.role);
   switch (employee.role) {
     case "Manager":
       return `<h3>${employee.role}<h3>`;
@@ -70,22 +67,19 @@ function getRole(employee) {
 function getOther(employee) {
   switch (employee.role) {
     case "Manager":
-      console.log(employee.role);
       return `<span><a href="tel:+${employee.phone}">${employee.phone}</a></span>
       `;
     case "Engineer":
-      console.log(employee.role);
       return `<span><a href="https://github.com/${employee.github}">github.com/${employee.github}</a></span>
       `;
     case "Intern":
-      console.log(employee.role);
       return `<span>${employee.school}</span>`;
   }
 }
 
 function generateMainHtml(html, filePath) {
   console.log("4 - Finishing your website!🙌💫💥");
-  const dir = path.join(filePath, "dist");
+  const dir = outputPath;
   fs.mkdir(dir, { recursive: true }, (err) => {
     err ? console.error(err) : process.chdir(dir);
     fs.writeFileSync("roster.html", html);
@@ -93,62 +87,3 @@ function generateMainHtml(html, filePath) {
 }
 
 module.exports.renderHTML = renderHTML;
-//   `<!DOCTYPE html>
-// <html lang="en">
-//     <head>
-//         <meta charset="UTF-8">
-//         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//         <link rel="stylesheet" href="style.css" />
-//         <title>${questions.companyName} - ${questions.teamProjectName}</title>
-//     </head>
-//     <body>
-//         <header>
-//             <h1>${questions.companyName}</h1>
-//         </header>
-//         <main>
-//             <section id="overview">
-//                 <div id="company">
-//                 <h2>Our Mission</h2>
-//                 <p>${questions.companyDesc}</p>
-//                 </div>
-//                 <div id="team">
-//                 <h2>Our Team</h2>
-//                 <p>${questions.teamOverview}</p>
-//                 </div>
-//             </section>
-//             <section id="mgrProfile">
-//             <div>
-//                 <h2>${questions.mgrName}</h2>
-//                 <p>${questions.mgrID}</p>
-//                 <p>${questions.mgrEmail}</p>
-//                 <p>${questions.mgrPhone}</p>
-//             </div>
-//         </section>
-//         <section id="engProfile">
-//         </section>
-//         <section id="intProfile">
-//         </section>
-//         </main>
-//     </body>
-// </html>`;
-
-// const generateEngHtml = (name, idNum, email, git) =>
-//   console.log(`<div class="engDetails">
-//         <h2>${name}</h2>
-//         <p>${idNum}</p>
-//         <p>${email}</p>
-//         <p>${git}</p>
-//     </div>`);
-
-// const generateIntHtml = (name, idNum, email, school) =>
-//   console.log(`<div class="engDetails">
-//         <h2>${name}</h2>
-//         <p>${idNum}</p>
-//         <p>${email}</p>
-//         <p>${school}</p>
-//     </div>`);
-
-// module.exports.generateMainHtml = generateMainHtml;
-// module.exports.generateEngHtml = generateEngHtml;
-// module.exports.generateIntHtml = generateIntHtml;
