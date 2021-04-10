@@ -43,11 +43,11 @@ function renderHTML(teamArray, OUTPUT_DIR) {
                     ${getOther(employee)}
                 </div>
             </div>
-        </article>
+        </section>
         `;
   });
 
-  HTML += `</div>
+  HTML += `</main>
     </body>
     </html>`;
 
