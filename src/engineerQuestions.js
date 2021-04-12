@@ -17,6 +17,6 @@ module.exports = [
   {
     type: "input",
     name: "engGit",
-    message: "What is the engineer's gitHub url?",
+    message: "What is the engineer's gitHub username?",
   },
 ];

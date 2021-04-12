@@ -13,7 +13,7 @@ This is a node terminal app that allows the user to easily create a team roster 
 
 Because this app is solely a command line program, it is not deployed. For a demonstration of its functionality, please view the video at this link:
 
-<a href="https://drive.google.com/file/d/1XZZSvq09aiZ2KiBXq5jO2FamPRI9qa7W/view" target="_blank">App Demo Video</a>
+<a href="https://drive.google.com/file/d/1OAWtLHhL1TGfigUiNBIOvcLyh8OplV8W/view" target="_blank">App Demo Video</a>
 
 ![Screenshot](assets/demo.png)
 
