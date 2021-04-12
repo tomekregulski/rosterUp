@@ -18,6 +18,8 @@ Because this app is solely a command line program, it is not deployed. For a dem
 
 <a href="https://drive.google.com/file/d/1XZZSvq09aiZ2KiBXq5jO2FamPRI9qa7W/view" target="_blank">App Demo Video</a>
 
+![Screenshot](assets/demo.png)
+
 # Installation
 
 Clone the repo and open it in your code editor of choice and install the necessary dependencies via the termnial:
