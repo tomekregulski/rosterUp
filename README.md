@@ -11,6 +11,8 @@
 
 This is a node terminal app that allows the user to easily create a team roster page by answering a series of prompts via inquirer. The user will first enter information about the manager, after which they are presented with the options to add Engineers and/or Interns, or to Finish building the team. When the user selects "Finish", the HTML is generated and written to a new "roster.html" file in the Output directory, and linked to a "style.css" file to apply basic styling.
 
+This app was built using a TDD approach with Jest.
+
 Because this app is solely a command line program, it is not deployed. For a demonstration of its functionality, please view the video at this link:
 
 <a href="https://drive.google.com/file/d/1OAWtLHhL1TGfigUiNBIOvcLyh8OplV8W/view" target="_blank">App Demo Video</a>
